@@ -1,17 +1,59 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Models;
 
-/**
- *
- * @author PC
- */
 public class Autor {
-    String nombre;
-    Libro Obras;
-    Autor lr,li;
+
+    private String nombre;
+    private Nlibro obras;
+    private Autor lr, li;
+
+    public Autor(String nombre) {
+        this.nombre = nombre;
+        this.lr = null;
+        this.li = null;
+        this.obras = null;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Nlibro getObras() {
+        return obras;
+    }
+
+    public void addObras(Nlibro obras) {
+        Nlibro temp = this.obras;
+        if (temp != null) {
+            while (temp.getRl() != null) {
+                temp = temp.getRl();
+            }
+            temp.setRl(obras);
+        }else{
+            this.obras=obras;
+        }
+        
+    }
+
+    public Autor getLr() {
+        return lr;
+    }
+
+    public void setLr(Autor lr) {
+        this.lr = lr;
+    }
+
+    public Autor getLi() {
+        return li;
+    }
+
+    public void setLi(Autor li) {
+        this.li = li;
+    }
+
 }
+
 //Una multilista con la información de los autores, y cada uno de los libros.
