@@ -17,6 +17,7 @@ public class Six extends javax.swing.JFrame {
     public Six() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**

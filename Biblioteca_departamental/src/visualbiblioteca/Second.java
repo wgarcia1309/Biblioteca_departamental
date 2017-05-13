@@ -22,6 +22,7 @@ public class Second extends javax.swing.JFrame {
     public Second() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**

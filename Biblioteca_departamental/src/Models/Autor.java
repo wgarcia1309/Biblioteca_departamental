@@ -27,15 +27,15 @@ public class Autor {
 
     public void addObras(Nlibro obras) {
         Nlibro temp = this.obras;
+        Libro t=obras.getLibro();
         if (temp != null) {
             while (temp.getRl() != null) {
                 temp = temp.getRl();
             }
-            temp.setRl(obras);
+            temp.setRl(new Nlibro(t));
         }else{
-            this.obras=obras;
+            this.obras=new Nlibro(t);
         }
-        
     }
 
     public Autor getLr() {

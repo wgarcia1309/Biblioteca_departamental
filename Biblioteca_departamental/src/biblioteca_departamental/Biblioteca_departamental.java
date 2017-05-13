@@ -22,6 +22,7 @@ public class Biblioteca_departamental {
 
     public void setLibrosF(Nlibro librosF) {
         this.librosF = librosF;
+        this.librosF.setRl();
     }
 
     public Nlibro getLibrosI() {
@@ -39,8 +40,8 @@ public class Biblioteca_departamental {
     public void setAutoresI(Nautor autoresI) {
         this.autoresI = autoresI;
     }
-    public void setAutoresF(Nautor autoresI) {
-        this.autoresI = autoresI;
+    public void setAutoresF(Nautor autoresF) {
+        this.autoresF = autoresF;
     }
     public void addAutor(Nautor autores) {
         Nautor temp=this.getAutoresI();
@@ -49,6 +50,7 @@ public class Biblioteca_departamental {
         }
         temp.setRl(autores);
         this.setAutoresF(autores);
+        autores.setRl();
     }
     
     public Nusuario getUsersF() {

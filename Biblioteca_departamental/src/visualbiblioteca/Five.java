@@ -97,57 +97,91 @@ public class Five extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        FirstView Vista= new FirstView();
+        FirstView Vista = new FirstView();
         Vista.setVisible(true);
         Vista.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (isNumeric(au.getText()) || au.getText().equals("") || gen.getText().equals("") || libro.getText().equals("") || cod.getText().equals("") ){
+        if (isNumeric(au.getText()) || au.getText().equals("") || gen.getText().equals("") || libro.getText().equals("") || cod.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Error el nombre no puede contener numeros o  ningun campo puede estar vacio");
-        }else{
-            //Buscar autor 
-            Nautor autemp=bib.getAutoresI();;
-            while(autemp!=null){
-            if(autemp.getAutor().getNombre().equalsIgnoreCase(au.getText()))break;
-            autemp=autemp.getRl();
+        } else {
+            Nlibro ntemp = bib.getLibrosI();//nodo inicial de libros
+            Libro ltemp = new Libro(libro.getText(), cod.getText(), gen.getText());//libro temporal
+            while (ntemp != null) {//isbn del libro;
+                if (ntemp.equals(new Nlibro(ltemp))) {
+                    JOptionPane.showMessageDialog(null,"El ISBN ya se ha utilizado");
+                    break;
+                }
+                ntemp = ntemp.getRl();
             }
-            if(autemp==null){
-                autemp= new Nautor(new Autor(au.getText()));
-                if(bib.getAutoresI()==null)bib.setAutoresI(autemp);
-                else bib.addAutor(autemp);
-                bib.setAutoresF(autemp);
-            }
-            Libro ltemp=new Libro(libro.getText(),cod.getText(),gen.getText());
-            Nlibro ntemp=new Nlibro(ltemp);
-            
-            if(bib.getLibrosI()==null){
-                bib.setLibrosI(ntemp);
+            if (ntemp == null) {//si el isbn no esta siendo utilizado
+                Nautor autemp = bib.getAutoresI();
+                while (autemp != null) {//Buscar autor 
+                    if (autemp.equals(new Nautor(new Autor(au.getText())))) {
+                        break;
+                    }
+                    autemp = autemp.getRl();
+                }
+                if (autemp == null) {
+                    autemp = new Nautor(new Autor(au.getText()));
+                    if (bib.getAutoresI() == null) {
+                        bib.setAutoresI(autemp);
+                    } else {
+                        bib.addAutor(autemp);
+                    }
+                    bib.setAutoresF(autemp);
+                }
+                ntemp = new Nlibro(ltemp);
+                if (bib.getLibrosI() == null) {
+                    bib.setLibrosI(ntemp);
+                } else {
+                    Nlibro ultimo = bib.getLibrosF();
+                    ultimo.setRl(ntemp);
+                }
                 autemp.getAutor().addObras(ntemp);
                 ltemp.setAutor(autemp.getAutor());
-            }else{
-                Nlibro ultimo=bib.getLibrosF();
-                ultimo.setRl(ntemp);
-                autemp.getAutor().addObras(ntemp);
-                ltemp.setAutor(autemp.getAutor());
+                JOptionPane.showMessageDialog(null, "Libro registrado");
+                bib.setLibrosF(ntemp);
             }
-            JOptionPane.showMessageDialog(null, "Libro registrado");
-            bib.setLibrosF(ntemp);
         }
         au.setText("");
         libro.setText("");
         gen.setText("");
         cod.setText("");
         libros();
+        autores();
+
     }//GEN-LAST:event_jButton1ActionPerformed
-    public void libros(){
-        System.out.println("Libros alv");
-        Nlibro ltemp=bib.getLibrosI();
-        while(ltemp!=null){
-            System.out.println(ltemp.getLibro().getNombre()+" "+ltemp.getLibro().getCodigo());
-            ltemp=ltemp.getRl();
+    public void libros() {
+        System.out.println("Libros ");
+        Nlibro ltemp = bib.getLibrosI();
+        while (ltemp != null) {
+            System.out.println(ltemp.getLibro().getNombre() + " " + ltemp.getLibro().getISBN());
+            ltemp = ltemp.getRl();
         }
+        System.out.println("----");
     }
+
+    public void autores() {
+        Nautor ltemp = bib.getAutoresI();
+        while (ltemp != null) {
+            Autor l = ltemp.getAutor();
+            System.out.println("Autor");
+            System.out.println(l.getNombre());
+            System.out.println("-------");
+            System.out.println("Obras");
+            Nlibro o = l.getObras();
+                while (o != null) {
+                    System.out.println(o.getLibro().getNombre());
+                    o = o.getRl();
+                }
+                System.out.println("-------");
+            ltemp = ltemp.getRl();
+        }
+        System.out.println("-------");
+    }
+
     /**
      * @param args the command line arguments
      */

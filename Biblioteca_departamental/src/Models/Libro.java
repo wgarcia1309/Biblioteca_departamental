@@ -9,29 +9,41 @@ import java.util.Date;
  */
 
 public class Libro {
-    private String codigo,nombre,genero;
-    private long codigou;
+    private String ISBN,nombre,genero;
+    private Usuario user;
     private boolean estado;
     private Autor autor;
     private Date  fecha;
 
-    public Libro( String nombre,String codigo,String genero) {
+    public Libro( String nombre,String ISBN,String genero) {
         this.nombre=nombre;
-        this.codigo = codigo;
-        codigou = -10;//-10 no lo ha tomado nadie
+        this.ISBN = ISBN;
+        user = null;//-10 no lo ha tomado nadie
+        this.estado = true;
+        this.fecha = null;
+        autor=null;
+    }
+    public Libro(String nombre) {
+        this.nombre=nombre;
+        this.ISBN = null;
+        user = null;//-10 no lo ha tomado nadie
         this.estado = true;
         this.fecha = null;
         autor=null;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public Autor getAutor() {
+        return autor;
+    }
+    
+    public String getISBN() {
+        return ISBN;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
-
+    
     public String getNombre() {
         return nombre;
     }
@@ -51,14 +63,18 @@ public class Libro {
     public void setAutor(Autor autor) {
         this.autor = autor;
     }
-    
-    public long getCodigou() {
-        return codigou;
+    public void setAutor() {
+        this.autor = null;
     }
 
-    public void setCodigou(long codigou) {
-        this.codigou = codigou;
+    public Usuario getUser() {
+        return user;
     }
+
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
+    
 
     public boolean isEstado() {
         return estado;
@@ -75,5 +91,11 @@ public class Libro {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
+    @Override
+    public boolean equals(Object o){
+        if (o instanceof Libro){
+        return this.getNombre().equalsIgnoreCase(((Libro) o).getNombre());
+        }
+    return false;
+    }
 }

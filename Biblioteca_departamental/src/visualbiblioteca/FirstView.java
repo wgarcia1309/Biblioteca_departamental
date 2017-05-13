@@ -16,6 +16,7 @@ public class FirstView extends javax.swing.JFrame {
      */
     public FirstView() {
         initComponents();
+        this.setResizable(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -110,7 +111,6 @@ public class FirstView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
         this.setVisible(false);
         Third view = new Third();
         view.setVisible(true);

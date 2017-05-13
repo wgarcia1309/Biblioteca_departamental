@@ -5,6 +5,14 @@
  */
 package visualbiblioteca;
 
+import Models.Libro;
+import Models.Nlibro;
+import Models.Nusuario;
+import Models.Usuario;
+import static biblioteca_departamental.Biblioteca_departamental.bib;
+import javax.swing.JOptionPane;
+import static visualbiblioteca.Second.isNumeric;
+
 /**
  *
  * @author Estudiantes
@@ -17,6 +25,7 @@ public class Third extends javax.swing.JFrame {
     public Third() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -29,12 +38,12 @@ public class Third extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nombrel = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        user = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,9 +51,9 @@ public class Third extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jLabel1.setText("Codigo libro");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 90, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 140, 30));
+        jLabel1.setText("Nombre");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 60, -1));
+        getContentPane().add(nombrel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 140, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         jLabel3.setText("Prestamo");
@@ -71,7 +80,7 @@ public class Third extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel4.setText("Codigo Usuario");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 100, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 140, 30));
+        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 140, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconandImagen/12009316-Pila-de-libros-en-una-cubierta-de-color-naranja-sobre-fondo-gris-Foto-de-archivo.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 270));
@@ -80,7 +89,6 @@ public class Third extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         this.setVisible(false);
         FirstView vistaso = new FirstView();
         vistaso.setVisible(true);
@@ -88,9 +96,50 @@ public class Third extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        if(isNumeric(user.getText())){
+        Nlibro tl=bib.getLibrosI();
+        Libro l=null;
+            while(tl!=null){
+                l=(Libro)tl.getLibro();
+                if(l.equals(new Libro(nombrel.getText())) &&  l.isEstado() )break;
+                l=null;
+                tl=tl.getRl();
+            }
+        Nusuario tu=bib.getUsersI();
+        Usuario u=null;
+            while(tu!=null){
+                u=(Usuario)tu.getUser();
+                if(u.equals(new Usuario(Long.parseLong(user.getText()))))break;
+                u=null;
+                tu=tu.getRl();
+            }
+            if(l!=null && u!=null){//presta libro
+                u.addLibros(l);
+                l.setUser(u);
+                l.setEstado(false);
+                JOptionPane.showMessageDialog(null, "El libro ha sido prestado existosamente");
+            }else{
+                if(l==null)JOptionPane.showMessageDialog(null, "Error el libro no se encuentra disponible");
+                if(u==null)JOptionPane.showMessageDialog(null, "Usuario no existe");
+            }
+        }else{
+        JOptionPane.showMessageDialog(null, "Codigo del usuario solo puede ser numerico");
+        }
+        Lpres();
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    public void Lpres(){
+    Nusuario temp=bib.getUsersI();
+    while(temp!=null){
+        Usuario u=temp.getUser();
+        System.out.println(u.getNombre()+"\nLibros:");
+        Nlibro lt=u.getLibros();
+        while(lt!=null){
+            System.out.println(lt.getLibro().getNombre());
+            lt=lt.getRl();
+        }
+    temp=temp.getRl();
+    }
+    }
     /**
      * @param args the command line arguments
      */
@@ -134,7 +183,7 @@ public class Third extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField nombrel;
+    private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 }

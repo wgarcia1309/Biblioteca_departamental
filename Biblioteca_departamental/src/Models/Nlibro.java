@@ -9,7 +9,6 @@ public class Nlibro {
         this.libro = libro;
         ll=rl=null;
     }
-
     public Libro getLibro() {
         return libro;
     }
@@ -39,5 +38,13 @@ public class Nlibro {
     }
     public void setRl() {
          this.rl=null;
+    }
+    @Override
+    public boolean equals(Object o){
+        if(o instanceof Nlibro){
+            Nlibro temp=(Nlibro)o;
+            return temp.getLibro().getISBN().equalsIgnoreCase(this.getLibro().getISBN());
+        }
+        return false;
     }
 }

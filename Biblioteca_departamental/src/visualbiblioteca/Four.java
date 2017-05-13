@@ -5,6 +5,11 @@
  */
 package visualbiblioteca;
 
+import Models.Libro;
+import Models.Nlibro;
+import static biblioteca_departamental.Biblioteca_departamental.bib;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Estudiantes
@@ -17,6 +22,7 @@ public class Four extends javax.swing.JFrame {
     public Four() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -31,7 +37,7 @@ public class Four extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        isbn = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -50,18 +56,23 @@ public class Four extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jButton2.setText("Devolver");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jLabel2.setText("Codigo libro");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, 20));
+        jLabel2.setText("ISBN");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 60, 20));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        isbn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                isbnActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 120, -1));
+        getContentPane().add(isbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         jLabel3.setText("Devolucion");
@@ -73,9 +84,9 @@ public class Four extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void isbnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isbnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_isbnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -84,6 +95,24 @@ public class Four extends javax.swing.JFrame {
         vist.setVisible(true);
         vist.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Nlibro temp=bib.getLibrosI();
+        Libro l=null;
+        while(temp!=null){
+            l=temp.getLibro();
+            if(l.getISBN().equals(isbn.getText()) && !l.isEstado())break;
+            l=null;
+        temp=temp.getRl();
+        }
+        if(l!=null){
+            l.getUser().delLibros(l);
+            l.setEstado(true);
+            l.setAutor();
+        }else{
+            JOptionPane.showMessageDialog(null,"No se ha encontrado ningun libro con este ISBN prestado");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,11 +150,11 @@ public class Four extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField isbn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

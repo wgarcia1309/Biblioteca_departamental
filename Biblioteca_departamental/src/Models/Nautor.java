@@ -44,4 +44,12 @@ public class Nautor {
     public void setRl() {
          this.rl=null;
     }
+    
+    @Override
+    public boolean equals(Object o){
+        if (o instanceof Nautor){
+            return this.getAutor().getNombre().equalsIgnoreCase(((Nautor) o).getAutor().getNombre());
+        }
+    return false;
+    }
 }
