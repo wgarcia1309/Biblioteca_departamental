@@ -57,15 +57,8 @@ public class Usuario {
            t.setRl(new Nlibro(o));
         }
     }
-     public void delLibros(Libro o){
-        if(libros==null){
-            libros=new Nlibro(o);
-        }else{
-            Nlibro t=libros;
-            while(t.getRl()!=null){
-                t=t.getRl();
-           }
-           t.setRl(new Nlibro(o));
+     public void delLibros(Libro o){//implementar
+         d
         }
     }
     public void setLibros(Nlibro libros) {
