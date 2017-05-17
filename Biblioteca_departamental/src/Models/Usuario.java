@@ -5,17 +5,18 @@
  */
 package Models;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author PC
  */
 public class Usuario {
-    private long cc;
-    int telefono;
+    private long cc,telefono;
     private String nombre;
     private Nlibro libros;
 
-    public Usuario(long cc, String nombre,int telefono) {
+    public Usuario(long cc, String nombre,long telefono) {
         this.cc = cc;
         this.nombre = nombre;
         libros=null;
@@ -46,6 +47,15 @@ public class Usuario {
     public Nlibro getLibros() {
         return libros;
     }
+
+    public long getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(long telefono) {
+        this.telefono = telefono;
+    }
+    
     public void addLibros(Libro o){
         if(libros==null){
             libros=new Nlibro(o);
@@ -57,8 +67,21 @@ public class Usuario {
            t.setRl(new Nlibro(o));
         }
     }
-     public void delLibros(Libro o){//implementar
-         d
+   
+     public void delLibros(String s){//implementar
+        Nlibro nodo=libros;
+        while(nodo!=null){
+        Libro l=nodo.getLibro();
+            if(l.getISBN().equalsIgnoreCase(s))break;
+            nodo=nodo.getRl();
+        }
+        if(nodo==null)JOptionPane.showMessageDialog(null, "Error no se encontro el ISBN");
+        else if(nodo==libros && nodo.getRl()==null) libros=null;
+        else if(nodo==libros)libros=nodo.getRl();
+        else{
+            Nlibro anterior=nodo.getLl();
+            if(nodo.getRl()!=null)anterior.setRl(nodo.getRl());
+            else anterior.setRl();
         }
     }
     public void setLibros(Nlibro libros) {

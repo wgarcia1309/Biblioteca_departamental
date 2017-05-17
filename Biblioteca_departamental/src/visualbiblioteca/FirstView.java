@@ -5,6 +5,8 @@
  */
 package visualbiblioteca;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author wmorelo
@@ -64,7 +66,7 @@ public class FirstView extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 120, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 150, -1));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jButton4.setText("Entregar libro");
@@ -97,7 +99,7 @@ public class FirstView extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 80, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconandImagen/12009316-Pila-de-libros-en-una-cubierta-de-color-naranja-sobre-fondo-gris-Foto-de-archivo.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 270));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

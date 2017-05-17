@@ -1,6 +1,7 @@
 
 package Models;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -74,6 +75,9 @@ public class Libro {
     public void setUser(Usuario user) {
         this.user = user;
     }
+    public void setUser() {
+        this.user = null;
+    }
     
 
     public boolean isEstado() {
@@ -90,6 +94,16 @@ public class Libro {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+    public void setFecha() {
+        this.fecha = null;
+    }
+    public long Multa() {
+        Calendar di=Calendar.getInstance(),df=Calendar.getInstance();
+        di.setTime(this.getFecha());
+        df.setTime(new Date());
+        long tm=((df.getTimeInMillis()-di.getTimeInMillis())/1000/60/60)-96;
+        return (tm>0)?1100*(tm/24):0;
     }
     @Override
     public boolean equals(Object o){

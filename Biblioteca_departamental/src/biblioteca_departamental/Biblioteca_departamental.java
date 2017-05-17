@@ -3,7 +3,14 @@ package biblioteca_departamental;
 
 import Models.Nautor;
 import Models.Nlibro;
+import Models.Libro;
 import Models.Nusuario;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import visualbiblioteca.FirstView;
 public class Biblioteca_departamental {
     
@@ -70,18 +77,21 @@ public class Biblioteca_departamental {
     }
     public static Biblioteca_departamental bib;
     public static void main(String[] args) {
+        /*try {
+            Libro l=new Libro("Yolo");
+            SimpleDateFormat dateformat2 = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+            String strdate2 = "09-05-2017 11:35:42";
+            Date newdate = dateformat2.parse(strdate2);
+            l.setFecha(newdate);
+            System.out.println(l.Multa());
+            } catch (ParseException ex) {
+            Logger.getLogger(Biblioteca_departamental.class.getName()).log(Level.SEVERE, null, ex);
+        }*/ 
+        
         bib = new Biblioteca_departamental();
-        FirstView First= new FirstView();
-        First.setVisible(true);
-        First.setLocationRelativeTo(null);
+            FirstView First= new FirstView();
+            First.setVisible(true);
+            First.setLocationRelativeTo(null);
+        
     }
 }
-/*
--Afiliar a usuario.
--Ingresar ejemplar a la biblioteca (nuevo).
--Prestar libro. (Solicitar el código del afiliado, agregar el ejemplar a sus ejemplares prestados, asignar el ejemplar como no disponible. Todos los libros se prestan para una devolución máxima a los 4 días.
--Entregar libro. Si el libro es entregado después de la fecha de entrega se le cobrara una multa de $1000 diarios.
--Verificar en todo el sistema cuales ejemplares se encuentran sobrepasando el día de entrega, esto con el fin de comunicarse con el usuario y solicitar su devolución.
--Tener en cuenta las validaciones respectivas.
- */
- 

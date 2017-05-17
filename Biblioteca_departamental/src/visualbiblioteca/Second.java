@@ -50,7 +50,7 @@ public class Second extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel1.setText("Nombre");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 46, 54, 24));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 46, 70, 24));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel2.setText("C.C.");
@@ -79,7 +79,7 @@ public class Second extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 201, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconandImagen/12009316-Pila-de-libros-en-una-cubierta-de-color-naranja-sobre-fondo-gris-Foto-de-archivo.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 270));
@@ -105,7 +105,7 @@ public class Second extends javax.swing.JFrame {
         }
         if (aux==1) {
             Nusuario xd=null;
-            Usuario temp = new Usuario(Long.parseLong(txt2.getText()),nombre,Integer.parseInt(txt3.getText()));
+            Usuario temp = new Usuario(Long.parseLong(txt2.getText()),nombre,Long.parseLong(txt3.getText()));
             if(bib.getUsersI()==null){
                 Nusuario ntemp=new Nusuario(temp);
                 bib.setUsersF(ntemp);

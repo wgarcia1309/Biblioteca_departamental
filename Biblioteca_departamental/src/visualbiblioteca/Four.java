@@ -106,9 +106,24 @@ public class Four extends javax.swing.JFrame {
         temp=temp.getRl();
         }
         if(l!=null){
-            l.getUser().delLibros(l);
-            l.setEstado(true);
-            l.setAutor();
+            long multa=l.Multa(); 
+            if(multa>0){
+                int a;
+                a=JOptionPane.showConfirmDialog(null, "Multa de "+multa +" la pagara ahora mismo?", "Multa", JOptionPane.YES_NO_OPTION);
+                if(a==0){
+                    l.getUser().delLibros(l.getISBN());
+                    l.setEstado(true);
+                    l.setUser();
+                    l.setFecha();
+                }else{
+                    JOptionPane.showMessageDialog(null, "El libro continua generando multa\nacerquese cuando tenga el dinero");
+                }
+            }else{
+                l.getUser().delLibros(l.getISBN());
+                l.setEstado(true);
+                l.setUser();
+                l.setFecha();
+            }
         }else{
             JOptionPane.showMessageDialog(null,"No se ha encontrado ningun libro con este ISBN prestado");
         }

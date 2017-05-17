@@ -10,6 +10,7 @@ import Models.Nlibro;
 import Models.Nusuario;
 import Models.Usuario;
 import static biblioteca_departamental.Biblioteca_departamental.bib;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import static visualbiblioteca.Second.isNumeric;
 
@@ -79,7 +80,7 @@ public class Third extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel4.setText("Codigo Usuario");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 100, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 120, -1));
         getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 140, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconandImagen/12009316-Pila-de-libros-en-una-cubierta-de-color-naranja-sobre-fondo-gris-Foto-de-archivo.jpg"))); // NOI18N
@@ -117,6 +118,7 @@ public class Third extends javax.swing.JFrame {
                 u.addLibros(l);
                 l.setUser(u);
                 l.setEstado(false);
+                l.setFecha(new Date());
                 JOptionPane.showMessageDialog(null, "El libro ha sido prestado existosamente");
             }else{
                 if(l==null)JOptionPane.showMessageDialog(null, "Error el libro no se encuentra disponible");

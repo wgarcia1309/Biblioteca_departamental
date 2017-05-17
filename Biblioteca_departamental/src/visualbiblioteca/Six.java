@@ -5,21 +5,34 @@
  */
 package visualbiblioteca;
 
+import Models.Libro;
+import Models.Nlibro;
+import static biblioteca_departamental.Biblioteca_departamental.bib;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Estudiantes
  */
 public class Six extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Six
-     */
     public Six() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        
     }
-
+    public void Calcular(){
+        Date f= new Date();
+        Nlibro nl=bib.getLibrosI();
+        DefaultTableModel modelo=(DefaultTableModel)jTable1.getModel();
+        while(nl!=null){//Delta de fecha actual con la final Para decir cuantos dias han pasado;
+            Libro l=nl.getLibro();
+            if(l.Multa()>0)modelo.addRow(new Object[]{l.getNombre(),l.Multa(),l.getUser().getNombre(),l.getUser().getTelefono()});
+            nl=nl.getRl();
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,18 +54,15 @@ public class Six extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Libro", "Multa", "Usuario", "Contacto"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 375, 114));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 410, 140));
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -74,8 +84,7 @@ public class Six extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-         FirstView vista=new FirstView();
+        FirstView vista=new FirstView();
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
         this.setVisible(false);
