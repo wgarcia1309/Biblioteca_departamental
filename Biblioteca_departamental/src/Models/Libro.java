@@ -19,8 +19,7 @@ public class Libro {
     public Libro( String nombre,String ISBN,String genero) {
         this.nombre=nombre;
         this.ISBN = ISBN;
-        this.genero=genero;
-        user = null;//No lo ha tomado nadie
+        user = null;//-10 no lo ha tomado nadie
         this.estado = true;
         this.fecha = null;
         autor=null;
@@ -28,7 +27,7 @@ public class Libro {
     public Libro(String nombre) {
         this.nombre=nombre;
         this.ISBN = null;
-        user = null;//No lo ha tomado nadie
+        user = null;//-10 no lo ha tomado nadie
         this.estado = true;
         this.fecha = null;
         autor=null;

@@ -46,13 +46,13 @@ public class Four extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jButton1.setText("Volver");
+        jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jButton2.setText("Devolver");
@@ -61,25 +61,25 @@ public class Four extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel2.setText("ISBN");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 60, 20));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 60, 20));
 
         isbn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 isbnActionPerformed(evt);
             }
         });
-        getContentPane().add(isbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 120, -1));
+        getContentPane().add(isbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         jLabel3.setText("Devolucion");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 150, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 150, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconandImagen/12009316-Pila-de-libros-en-una-cubierta-de-color-naranja-sobre-fondo-gris-Foto-de-archivo.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 0, 510, 270));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -115,7 +115,6 @@ public class Four extends javax.swing.JFrame {
                     l.setEstado(true);
                     l.setUser();
                     l.setFecha();
-                    JOptionPane.showMessageDialog(null, "El libro ha sido devuelto");
                 }else{
                     JOptionPane.showMessageDialog(null, "El libro continua generando multa\nacerquese cuando tenga el dinero");
                 }
@@ -124,14 +123,12 @@ public class Four extends javax.swing.JFrame {
                 l.setEstado(true);
                 l.setUser();
                 l.setFecha();
-                JOptionPane.showMessageDialog(null, "El libro ha sido devuelto");
             }
         }else{
             JOptionPane.showMessageDialog(null,"No se ha encontrado ningun libro con este ISBN prestado");
         }
-        isbn.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */

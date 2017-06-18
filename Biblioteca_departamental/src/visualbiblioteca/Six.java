@@ -21,14 +21,15 @@ public class Six extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        Calcular();
+        
     }
     public void Calcular(){
+        Date f= new Date();
         Nlibro nl=bib.getLibrosI();
         DefaultTableModel modelo=(DefaultTableModel)jTable1.getModel();
         while(nl!=null){//Delta de fecha actual con la final Para decir cuantos dias han pasado;
             Libro l=nl.getLibro();
-            if( !l.isEstado() && l.Multa()>0)modelo.addRow(new Object[]{l.getNombre(),l.Multa(),l.getUser().getNombre(),l.getUser().getTelefono()});
+            if(l.Multa()>0)modelo.addRow(new Object[]{l.getNombre(),l.Multa(),l.getUser().getNombre(),l.getUser().getTelefono()});
             nl=nl.getRl();
         }
     }
@@ -59,13 +60,11 @@ public class Six extends javax.swing.JFrame {
                 "Libro", "Multa", "Usuario", "Contacto"
             }
         ));
-        jTable1.setEnabled(false);
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 410, 140));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jButton1.setText("Volver");
+        jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -75,7 +74,7 @@ public class Six extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         jLabel2.setText("Sobrepasados");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 20, 180, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconandImagen/12009316-Pila-de-libros-en-una-cubierta-de-color-naranja-sobre-fondo-gris-Foto-de-archivo.jpg"))); // NOI18N
@@ -88,7 +87,7 @@ public class Six extends javax.swing.JFrame {
         FirstView vista=new FirstView();
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

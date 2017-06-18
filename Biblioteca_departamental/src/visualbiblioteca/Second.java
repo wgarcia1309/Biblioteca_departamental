@@ -42,7 +42,6 @@ public class Second extends javax.swing.JFrame {
         txt3 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,27 +50,27 @@ public class Second extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel1.setText("Nombre");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 70, 24));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 46, 70, 24));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel2.setText("C.C.");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 90, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel3.setText("Telefono");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, -1));
-        getContentPane().add(txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 80, -1));
-        getContentPane().add(txt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 80, -1));
-        getContentPane().add(txt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 80, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 126, -1, -1));
+        getContentPane().add(txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 49, 80, -1));
+        getContentPane().add(txt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 88, 80, -1));
+        getContentPane().add(txt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 126, 80, -1));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jButton2.setText("Volver");
+        jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 201, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jButton3.setText("Registrar");
@@ -80,14 +79,10 @@ public class Second extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
-        jLabel6.setText("Registro Usuario");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 310, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconandImagen/12009316-Pila-de-libros-en-una-cubierta-de-color-naranja-sobre-fondo-gris-Foto-de-archivo.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 570, 270));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,7 +200,6 @@ public class Second extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField txt1;
     private javax.swing.JTextField txt2;
     private javax.swing.JTextField txt3;
